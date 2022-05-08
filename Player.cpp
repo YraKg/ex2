@@ -16,7 +16,7 @@ Player::Player(const char * name, int HP, int force)
     m_coins = STARTING_COINS;
 }
 
-Player::Player(const char * name, int HP)
+Player::Player(const char * name, int HP)//TODO вьебать через двоеточие
 {
     if(HP<=0)
         HP = DEFAULT_HP;
@@ -30,7 +30,7 @@ Player::Player(const char * name, int HP)
     m_coins = STARTING_COINS;
 }
 
-Player::Player(const char * name)
+Player::Player(const char * name)//TODO вьебать через двоеточие
 {
     this->m_name = name;
 
@@ -48,7 +48,7 @@ void Player::printInfo() const
 
 void Player::levelUp()
 {
-    if(!(this->m_level>=MAX_LEVEL))
+    if(!(this->m_level>=MAX_LEVEL))//TODO check with assert
         this->m_level++;
 }
 

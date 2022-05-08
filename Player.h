@@ -12,7 +12,7 @@ class Player {
     static const int STARTING_LEVEL = 1;
     static const int STARTING_COINS = 0;
 private:
-    const char *m_name;
+    const char *m_name;//TODO maybe string??
     int m_level;
     int m_force;
     int m_maxHP;
