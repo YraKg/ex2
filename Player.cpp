@@ -1,55 +1,56 @@
 #include "Player.h"
-Player::Player(const char * name, int HP, int force)
+Player::Player(std::string name, int HP, int force): m_name(name),
+                                                     m_HP(HP),
+                                                     m_maxHP(HP),
+                                                     m_force(force),
+                                                     m_level(STARTING_LEVEL),
+                                                     m_coins(STARTING_COINS)
 {
-    if(HP<=0)
-        HP = DEFAULT_HP;
+    if(HP<=0){
+        this->m_HP = DEFAULT_HP;
+        this->m_maxHP = DEFAULT_HP;
+    }
 
     if(force > 10 || force<0)
-        force = DEFAULT_FORCE;
-
-    this->m_name = name;
-    this->m_HP = HP;
-    this->m_maxHP = HP;
-    this->m_force = force;
-
-    m_level = STARTING_LEVEL;
-    m_coins = STARTING_COINS;
+        this->m_force = DEFAULT_FORCE;
 }
 
-Player::Player(const char * name, int HP)//TODO вьебать через двоеточие
+
+Player::Player(std::string name, int HP): m_name(name),
+                                          m_HP(HP),
+                                          m_maxHP(HP),
+                                          m_force(DEFAULT_FORCE),
+                                          m_level(STARTING_LEVEL),
+                                          m_coins(STARTING_COINS)
+
 {
-    if(HP<=0)
-        HP = DEFAULT_HP;
-
-    this->m_name = name;
-    this->m_HP = HP;
-    this->m_maxHP = HP;
-
-    m_force = DEFAULT_FORCE;
-    m_level = STARTING_LEVEL;
-    m_coins = STARTING_COINS;
+    if(HP<=0){
+        this->m_HP = DEFAULT_HP;
+        this->m_maxHP = DEFAULT_HP;
+    }
 }
 
-Player::Player(const char * name)//TODO вьебать через двоеточие
-{
-    this->m_name = name;
 
-    m_HP = DEFAULT_HP;
-    m_maxHP = DEFAULT_HP;
-    m_force = DEFAULT_FORCE;
-    m_level = STARTING_LEVEL;
-    m_coins = STARTING_COINS;
-}
+Player::Player(std::string name): m_name(name),
+                                  m_HP(DEFAULT_HP),
+                                  m_maxHP(DEFAULT_HP),
+                                  m_force(DEFAULT_FORCE),
+                                  m_level(STARTING_LEVEL),
+                                  m_coins(STARTING_COINS)
+{}
+
 
 void Player::printInfo() const
 {
-    printPlayerInfo(this->m_name, this->m_level, this->m_force, this->m_HP, this->m_coins);
+    printPlayerInfo(this->m_name.c_str(), this->m_level, this->m_force, this->m_HP, this->m_coins);
 }
 
 void Player::levelUp()
 {
-    if(!(this->m_level>=MAX_LEVEL))//TODO check with assert
-        this->m_level++;
+
+    assert(this->m_level<MAX_LEVEL);
+    this->m_level++;
+
 }
 
 int Player::getLevel() const
