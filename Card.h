@@ -19,6 +19,8 @@
 enum class CardType {Battle, Buff, Heal, Treasure}; // The type of the Card
 
 class Card {
+
+
 public:
     /*
      * C'tor of Card class

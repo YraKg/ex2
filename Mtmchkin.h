@@ -56,12 +56,17 @@ public:
      *          GameStatus - the current status of the running game
      */
     GameStatus getGameStatus() const;
+    ~Mtmchkin();
+    Mtmchkin& operator=(const Mtmchkin& other);
 
-    //TODO: complete the Mtmchkin class.
+
 
 private:
-    //TODO: complete the Mtmchkin class.
-
+   GameStatus m_game_status;
+   Player* m_player ;
+   const Card* m_cardArray;
+   const int m_numCards;
+   int m_curr_card;
 };
 
 
