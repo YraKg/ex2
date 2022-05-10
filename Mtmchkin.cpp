@@ -1,7 +1,8 @@
-#include <cassert>
+
 #include "Mtmchkin.h"
 #include "Card.h"
 #include "Player.h"
+#include <cassert>
 
 Mtmchkin::Mtmchkin(const char *playerName, const Card *cardsArray, int numOfCards):
     m_game_status(GameStatus::MidGame),
@@ -17,7 +18,8 @@ Mtmchkin::Mtmchkin(const char *playerName, const Card *cardsArray, int numOfCard
 Mtmchkin::~Mtmchkin()
 {
     delete this->m_player;
-    delete this->m_cardArray;
+
+    delete[] this->m_cardArray;
 }
 
 

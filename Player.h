@@ -12,13 +12,11 @@ class Player {
     static const int STARTING_LEVEL = 1;
     static const int STARTING_COINS = 0;
 private:
-
     std::string m_name;
-
-    int m_level;
-    int m_force;
-    int m_maxHP;
     int m_HP;
+    int m_maxHP;
+    int m_force;
+    int m_level;
     int m_coins;
 
 public:
