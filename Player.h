@@ -4,6 +4,7 @@
 
 #include <string>
 #include "utilities.h"
+#include <cassert>
 
 class Player {
     static const int DEFAULT_HP = 100;
@@ -12,7 +13,7 @@ class Player {
     static const int STARTING_LEVEL = 1;
     static const int STARTING_COINS = 0;
 private:
-    const char *m_name;
+    std::string m_name;
     int m_level;
     int m_force;
     int m_maxHP;
@@ -29,7 +30,7 @@ public:
          * @param HP - The HP of the player at the start
          * @param force - The force of the player at the start
     */
-    Player(const char * name, int HP, int force);
+    Player(std::string name, int HP, int force);
 
 
     /*
@@ -38,7 +39,7 @@ public:
         * @param name - The name of the player
         * @param HP - The HP of the player at the start
    */
-    Player(const char * name, int HP);
+    Player(std::string name, int HP);
 
 
     /*
@@ -46,7 +47,7 @@ public:
           *
           * @param name - The name of the player
      */
-    Player(const char * name);
+    Player(std::string name);
 
 
     /*
