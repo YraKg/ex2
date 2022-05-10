@@ -9,7 +9,6 @@
 class Player {
     static const int DEFAULT_HP = 100;
     static const int DEFAULT_FORCE = 5;
-    static const int MAX_LEVEL = 10;
     static const int STARTING_LEVEL = 1;
     static const int STARTING_COINS = 0;
 private:
@@ -21,7 +20,7 @@ private:
     int m_coins;
 
 public:
-
+    static const int MAX_LEVEL = 10;
 
     /*
          * C'tor of Player class
@@ -156,6 +155,8 @@ public:
       *      false  otherwise
    */
     bool pay(int toPay);
+
+
 };
 
 #endif //EX2_MAIN_PLAYER_H

@@ -57,14 +57,14 @@ public:
      */
     GameStatus getGameStatus() const;
     ~Mtmchkin();
-    Mtmchkin& operator=(const Mtmchkin& other);
+    Mtmchkin& operator=(const Mtmchkin& other)=default;
 
 
 
 private:
    GameStatus m_game_status;
    Player* m_player ;
-   const Card* m_cardArray;
+   Card* m_cardArray;
    const int m_numCards;
    int m_curr_card;
 };

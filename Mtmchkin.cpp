@@ -4,23 +4,35 @@
 #include "Player.h"
 
 Mtmchkin::Mtmchkin(const char *playerName, const Card *cardsArray, int numOfCards):
-    m_cardArray(cardsArray),
     m_game_status(GameStatus::MidGame),
     m_numCards(numOfCards),
     m_curr_card(0)
 {
-    m_player=new Player(playerName);
+    this->m_player=new Player(playerName);
+    this->m_cardArray=new Card[numOfCards];
+    for(int i=0;i<numOfCards;i++)
+       this->m_cardArray[i]=cardsArray[i];
 }
 
 Mtmchkin::~Mtmchkin()
 {
-
+    delete this->m_player;
+    delete this->m_cardArray;
 }
+
+
 
 bool Mtmchkin::isOver()
 {
-    if(this->m_game_status!=GameStatus::MidGame)
+    if(this->m_player->getLevel()==Player::MAX_LEVEL)
+    {
+        this->m_game_status=GameStatus::Win;
         return true;
+    }
+    else if(this->m_player->isKnockedOut())
+    {
+        this->m_game_status=GameStatus::Loss;
+    }
     return false;
 }
 
