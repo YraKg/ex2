@@ -19,6 +19,8 @@
 enum class CardType {Battle, Buff, Heal, Treasure}; // The type of the Card
 
 class Card {
+
+
 public:
     /*
      * C'tor of Card class
@@ -60,7 +62,7 @@ public:
      * Here we are explicitly telling the compiler to use the default methods
     */
     Card(const Card&) = default;
-    ~Card() = default;
+    ~Card()=default;
     Card& operator=(const Card& other) = default;
 
 
