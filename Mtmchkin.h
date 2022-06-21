@@ -1,73 +1,72 @@
-//
-// Created by Daniel_Meents on 07/04/2022.
-//
+#ifndef MTMCHKIN_H_
+#define MTMCHKIN_H_
 
-#ifndef EX2_GAME_H
-#define EX2_GAME_H
-#include "Card.h"
+#include <memory>
+#include <vector>
+#include <deque>
+
+#include "Player.h"
+
 #include <iostream>
-
-/*
- * GameStatus:
- * MidGame - The game is still active and the player continues to encounter cards.
- * Win - The player reached level 10.
- * Loss - The player's HP is 0.
-*/
-enum class GameStatus{Win, Loss, MidGame};
+#include <fstream>
+#include <string>
+using namespace std;
 
 class Mtmchkin {
+
+private:
+    std::vector<std::shared_ptr<Player>> m_players;
+    std::vector<std::shared_ptr<Player>> m_winners;
+    std::vector<std::shared_ptr<Player>> m_losers;
+    deque<std::shared_ptr<Card>> m_deque;
+
+    int m_rounds;
+
 public:
 
     /*
-     * C'tor of the game:
-     *
-     * @param playerName - The name of the player.
-     * @param cardsArray - A ptr to the cards deck.
-     * @param numOfCards - Num of cards in the deck.
-     * @result
-     *      An instance of Mtmchkin
+    * C'tor of Mtmchkin class
+    *
+    * @param filename - a file which contains the cards of the deck.
+    * @return
+    *      A new instance of Mtmchkin.
     */
-    Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards);
-
+    Mtmchkin(const std::string& fileName);
 
     /*
-     * Play the next Card - according to the instruction in the exercise document
-     *
-     * @return
-     *      void
+    * Play the next Round of the game - according to the instruction in the exercise document.
+    *
+    * @return
+    *      void
     */
-    void playNextCard();
-
-
-    /*
-     *  Check if the game ended:
-     *
-     *  @return
-     *          True if the game ended
-     *          False otherwise
-     */
-    bool isOver();
-
+    void playRound();
 
     /*
-     *  Get the status of the game:
-     *
-     *  @return
-     *          GameStatus - the current status of the running game
-     */
-    GameStatus getGameStatus() const;
-    ~Mtmchkin();
-    Mtmchkin& operator=(const Mtmchkin& other)=default;
+    * Prints the leaderBoard of the game at a given stage of the game - according to the instruction in the exercise document.
+    *
+    * @return
+    *      void
+    */
+    void printLeaderBoard() const;
 
+    /*
+    *  Checks if the game ended:
+    *
+    *  @return
+    *          True if the game ended
+    *          False otherwise
+    */
+    bool isGameOver() const;
 
+    /*
+    *  Returns the number of rounds played.
+    *
+    *  @return
+    *          int - number of rounds played
+    */
+    int getNumberOfRounds() const;
 
-private:
-   GameStatus m_game_status;
-   Player* m_player ;
-   Card* m_cardArray;
-   const int m_numCards;
-   int m_curr_card;
+    bool isWinnerOrLoser(const std::shared_ptr<Player>& player) const;
 };
 
-
-#endif //EX2_GAME_H
+#endif /* MTMCHKIN_H_ */
